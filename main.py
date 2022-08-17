@@ -123,14 +123,14 @@ if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
 else:
   #Find the row number of the employee info
-  Token_col=sheet.get('A') 
+  Token_col=sheet.col_values(1) 
     for cell in Token_col:
       if cell.value = security_key:
         EmpInfo_RowNum=cell.row
-        emp_info=sheet.row_values(EmpInfo_RowNum)
+       # emp_info=sheet.row_values(EmpInfo_RowNum)
   #Read employee Name and ID depand on the Row Number
   Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
-  Emp_Name=sheet.cell(EmpInfo_RowNum, 3.value
+  Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
   st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
     
         
