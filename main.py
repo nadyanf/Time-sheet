@@ -15,7 +15,6 @@ import pandas as pd
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-from sklearn import preprocessing
 
 scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name("secret.json", scopes=scopes)
