@@ -122,6 +122,6 @@ check_security_key=(security_key in df['Token'].astype(str).unique())
 if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
 if check_security_key is True:
-    st.text("Name: Nadya Alfardan "+ "ID: 12346")
+    st.info("Name: Nadya Alfardan "+ "ID: 12346")
     
         
