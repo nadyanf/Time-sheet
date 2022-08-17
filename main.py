@@ -120,9 +120,4 @@ check_security_key=(security_key in df['Token'].astype(str).unique())
 if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
 else:
-    # setting up the form page
-st.title('Dear Employee, you have been late for today\'s attendance')
-options = (
-    '----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
-selection = st.selectbox("Please choose a reason",
-                         options)
+    ()
