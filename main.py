@@ -123,7 +123,7 @@ if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
 else:
   #Find the row number of the employee info
-  Token_col=sheet['A'] 
+  Token_col=sheet.get('A') 
     for cell in Token_col:
       if cell.value = security_key:
         EmpInfo_RowNum=cell.row
