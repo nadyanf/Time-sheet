@@ -122,8 +122,5 @@ if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
 else:
   st.lable("test")
-    Token_col=sheet['Token']
-    for cell in Token_col:
-      if cell.value = security_key:
-        emp_info=cell.row
+    
         
