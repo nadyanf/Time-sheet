@@ -113,6 +113,7 @@ def set_bg_hack(main_bg):
 image = Image.open("OIP.jpg")
 st.image(image)
 security_key=None
+st.title('Dear Employee, you have been late for today\'s attendance')
 st.title('Please enter the security key')
 security_key=st.text_input('Security key')
 df = pd.DataFrame(sheet.get_all_records())
