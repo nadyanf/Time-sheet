@@ -15,6 +15,8 @@ import pandas as pd
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+from sklearn import preprocessing
+
 scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name("secret.json", scopes=scopes)
 file = gspread.authorize(creds)
@@ -114,13 +116,13 @@ image = Image.open("OIP.jpg")
 st.image(image)
 security_key=None
 st.title('Dear Employee, you have been late for today\'s attendance')
-st.title('Please enter the security key')
+st.subheader('Please enter the security key')
 security_key=st.text_input('Security key')
 df = pd.DataFrame(sheet.get_all_records())
 check_security_key=(security_key in df['Token'].astype(str).unique())
 if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
 else:
-  st.lable("test")
+  st.text("Name: Nadya Alfardan "+ "ID: 12346")
     
         
