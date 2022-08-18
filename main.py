@@ -134,5 +134,8 @@ else:
   Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
   Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
   st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
+  options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
+  selection = st.selectbox("Please choose a reason", options)
+  
     
         
