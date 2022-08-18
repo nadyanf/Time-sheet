@@ -133,7 +133,7 @@ else:
   #Read employee Name and ID depand on the Row Number
   Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
   Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
-  if check_security_key =! False:
+  if check_security_key != False:
     st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
     options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
     selection = st.selectbox("Please choose a reason", options)
