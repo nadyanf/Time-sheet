@@ -199,8 +199,119 @@ else:
                       client_name_3, loc3, country3)
         # this will make the form print the saved results and stop the execution
         finish = True
-
-
-  
-    
+  elif selection == 'Hospital visit':
+    clm1, clm2, clm3 = st.columns(3)
+    location = clm1.text_input('location')
+    start_time1 = str(clm2.time_input('from:', datetime.now(), 1))
+    end_time1 = str(clm3.time_input('to:', datetime.now(), 1))
+    save_add_button = clm2.button('save/add')
+    if save_add_button:
+        mysum = str(calculate_time(start_time1, end_time1))
+        array[17] = mysum
+        array[18] = location
+        st.success('response added')
+    save_exit_button = clm3.button('save/exit')
+    if save_exit_button:
+        mysum = str(calculate_time(start_time1, end_time1))
+        array[17] = mysum
+        array[18] = location
+        finish = True
+  elif selection == 'Vendor visit':
+    clm1, clm2, clm3 = st.columns(3)
+    vendor_name_1 = clm1.text_input('vendor name 1')
+    vendor_name_2 = clm1.text_input('vendor name 2')
+    # this to make time slots appear after inputting a name
+    if vendor_name_1:
+        start_time1 = str(clm2.time_input('from:', datetime.now(), 1))
+        end_time1 = str(clm3.time_input('to:', datetime.now(), 1))
+    if vendor_name_2:
+        start_time_2 = str(clm2.time_input('from:', datetime.now(), 2))
+        end_time_2 = str(clm3.time_input('to:', datetime.now(), 2))
+    save_add_button = clm2.button('save/add')
+    if save_add_button:
+        # handling time exceptions
+        try:
+            mysum = str(calculate_time(start_time1, end_time1))
+        except:
+            mysum = '00:00:00'
+        try:
+            mysum2 = str(calculate_time(start_time_2, end_time_2))
+        except:
+            mysum2 = '00:00:00'
+        # calling insertion function
+        insert_vendor(mysum, vendor_name_1, mysum2, vendor_name_2)
+        st.success('response added')
+    save_exit_button = clm3.button('save/exit')
+    if save_exit_button:
+        # handling time exception
+        try:
+            mysum = str(calculate_time(start_time1, end_time1))
+        except:
+            mysum = '00:00:00'
+        try:
+            mysum2 = str(calculate_time(start_time_2, end_time_2))
+        except:
+            mysum2 = '00:00:00'
+        # calling insertion function
+        insert_vendor(mysum, vendor_name_1, mysum2, vendor_name_2)
+        finish = True
         
+  elif selection == 'Business trip':
+    clm1, clm2, clm3, clm4 = st.columns(4)
+    country = clm1.text_input('country:')
+    location = clm2.text_input('location:')
+    if country:
+        date_from = str(clm3.date_input('from'))
+        date_to = str(clm4.date_input('to'))
+    save_add_button = clm3.button('save/add')
+    if save_add_button:
+        # calling insertion function
+        try:
+            insert_business_trip(country, location, date_from, date_to)
+        except:
+            insert_business_trip(country, location, '', '')
+        st.success('response added')
+    save_exit_button = clm4.button('save/exit')
+    if save_exit_button:
+        # calling insertion function
+        try:
+            insert_business_trip(country, location, date_from, date_to)
+        except:
+            insert_business_trip(country, location, '', '')
+        finish = True
+        
+  elif selection == 'Personal excuse':
+    clm1, clm2, clm3 = st.columns(3)
+    start_time1 = str(clm2.time_input('from:', datetime.now(), 1))
+    end_time1 = str(clm3.time_input('to:', datetime.now(), 1))
+    save_add_button = clm2.button('save/add')
+    if save_add_button:
+        mysum = str(calculate_time(start_time1, end_time1))
+        array[27] = mysum
+        st.success('response added')
+    save_exit_button = clm3.button('save/exit')
+    if save_exit_button:
+        mysum = str(calculate_time(start_time1, end_time1))
+        array[27] = mysum
+        finish = True
+        
+  elif selection == 'Reporting late':
+    clm2, clm3 = st.columns(2)
+    start_time1 = str(clm2.time_input('from:', datetime.now(), 1))
+    end_time1 = str(clm3.time_input('to:', datetime.now(), 1))
+    save_add_button = clm2.button('save/add')
+    if save_add_button:
+        mysum = str(calculate_time(start_time1, end_time1))
+        array[28] = mysum
+        st.success('response added')
+    save_exit_button = clm3.button('save/exit')
+    if save_exit_button:
+        mysum = str(calculate_time(start_time1, end_time1))
+        array[28] = mysum
+        finish = True
+  if finish is True:  # if save/exit button was pressed the code comes here
+    dates = str(f"{datetime.now():%Y-%m-%d}")
+    sheet.append_row(array)
+    st.experimental_singleton.clear()
+    st.success('response saved, you can now exit the form')
+    st.stop()
