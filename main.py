@@ -128,7 +128,7 @@ else:
     count=1
     if cell == security_key:
         EmpInfo_RowNum=count
-    count=count+1
+#     count=count+1
        # emp_info=sheet.row_values(EmpInfo_RowNum)
         #Read employee Name and ID depand on the Row Number
         Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
