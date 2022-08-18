@@ -121,7 +121,7 @@ df = pd.DataFrame(sheet.get_all_records())
 check_security_key=(security_key in df['Token'].astype(str).unique())
 if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
-if check_security_key is True:
+else:
   #Find the row number of the employee info
   Token_col=sheet.col_values(1) 
   for cell in Token_col:
@@ -133,12 +133,13 @@ if check_security_key is True:
   #Read employee Name and ID depand on the Row Number
   Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
   Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
-  st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
-  options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
-  selection = st.selectbox("Please choose a reason", options)
+  if check_security_key is True:
+    st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
+    options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
+    selection = st.selectbox("Please choose a reason", options)
   
   # these if statements are for setting up the form selection box
-if selection == 'Customer visit':
+  if selection == 'Customer visit':
     clm1, clm2, clm3, clm4, clm5 = st.columns(5)
     client_name_1 = clm1.text_input('Client name 1')
     client_name_2 = clm1.text_input('Client name 2')
