@@ -134,8 +134,8 @@ else:
         Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
         if check_security_key != False:
           st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
-          options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
-          selection = st.selectbox("Please choose a reason", options)
+    options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
+    selection = st.selectbox("Please choose a reason", options)
   
   # these if statements are for setting up the form selection box
   if selection == 'Customer visit':
