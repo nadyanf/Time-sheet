@@ -121,7 +121,7 @@ df = pd.DataFrame(sheet.get_all_records())
 check_security_key=(security_key in df['Token'].astype(str).unique())
 if check_security_key is False:
     st.error("The security key: "+security_key+" is invalid.")
-else:
+if check_security_key is True:
   #Find the row number of the employee info
   Token_col=sheet.col_values(1) 
   for cell in Token_col:
