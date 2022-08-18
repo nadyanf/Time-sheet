@@ -130,12 +130,12 @@ else:
         EmpInfo_RowNum=count
     count=count+1
        # emp_info=sheet.row_values(EmpInfo_RowNum)
-  #Read employee Name and ID depand on the Row Number
-  Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
-  Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
-  st.info("Name: "+Emp_Name+", ID: "+Emp_ID)
-  if check_security_key != False:
-    st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
+        #Read employee Name and ID depand on the Row Number
+        Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
+        Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
+        st.info("Name: "+Emp_Name+", ID: "+Emp_ID)
+        if check_security_key != False:
+          st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
     options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
     selection = st.selectbox("Please choose a reason", options)
   
