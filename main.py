@@ -124,7 +124,7 @@ if check_security_key is False:
 else:
   #Find the row number of the employee info
   Token_col=sheet.col_values(1) 
-  for cell in Token_col:
+  for cell in Token_col: #try to take row number --- can use cell.row
     count=1
     if cell == security_key:
         EmpInfo_RowNum=count
@@ -133,7 +133,7 @@ else:
   #Read employee Name and ID depand on the Row Number
   Emp_ID= sheet.cell(EmpInfo_RowNum, 2).value
   Emp_Name=sheet.cell(EmpInfo_RowNum, 3).value
-  if check_security_key is True:
+  if check_security_key =! False:
     st.markdown("Name: "+Emp_Name+", ID: "+Emp_ID)
     options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
     selection = st.selectbox("Please choose a reason", options)
@@ -309,9 +309,10 @@ else:
         mysum = str(calculate_time(start_time1, end_time1))
         array[28] = mysum
         finish = True
-  if finish is True:  # if save/exit button was pressed the code comes here
-    dates = str(f"{datetime.now():%Y-%m-%d}")
-    sheet.append_row(array)
-    st.experimental_singleton.clear()
-    st.success('response saved, you can now exit the form')
-    st.stop()
+        
+  #if finish is True:  # if save/exit button was pressed the code comes here
+  # dates = str(f"{datetime.now():%Y-%m-%d}")
+  #  sheet.append_row(array)
+  # st.experimental_singleton.clear()
+  #  st.success('response saved, you can now exit the form')
+  # st.stop()
