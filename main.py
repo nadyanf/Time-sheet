@@ -1,32 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@nadyanf 
-nadyanf
-/
-Time-sheet
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Time-sheet/main.py /
-@nadyanf
-nadyanf Update main.py
-Latest commit bbc9d6b 3 hours ago
- History
- 1 contributor
-318 lines (292 sloc)  11.5 KB
-
 import base64
 from datetime import datetime
 import datetime as dt
@@ -344,17 +315,3 @@ else:
   # st.experimental_singleton.clear()
   #  st.success('response saved, you can now exit the form')
   # st.stop()
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
