@@ -137,5 +137,69 @@ else:
   options = ('----', 'Customer visit', 'Hospital visit', 'Vendor visit', 'Business trip', 'Personal excuse', 'Reporting late')
   selection = st.selectbox("Please choose a reason", options)
   
+  # these if statements are for setting up the form selection box
+if selection == 'Customer visit':
+    clm1, clm2, clm3, clm4, clm5 = st.columns(5)
+    client_name_1 = clm1.text_input('Client name 1')
+    client_name_2 = clm1.text_input('Client name 2')
+    client_name_3 = clm1.text_input('Client name 3')
+    loc1 = clm3.text_input('location:', key=1)
+    loc2 = clm3.text_input('location:', key=2)
+    loc3 = clm3.text_input('location:', key=3)
+    country1 = clm2.text_input('country:', key=1)
+    country2 = clm2.text_input('country:', key=2)
+    country3 = clm2.text_input('country:', key=3)
+    # these if statements just to make the time slots appear after typing in a name for clearnce
+    if client_name_1:
+        start_time1 = str(clm4.time_input('from:', datetime.now(), 1))
+        end_time1 = str(clm5.time_input('to:', datetime.now(), 1))
+    if client_name_2:
+        start_time_2 = str(clm4.time_input('from:', datetime.now(), 2))
+        end_time_2 = str(clm5.time_input('to:', datetime.now(), 2))
+    if client_name_3:
+        start_time_3 = str(clm4.time_input('from:', datetime.now(), 3))
+        end_time_3 = str(clm5.time_input('to:', datetime.now(), 3))
+    save_add_button = clm4.button('save/add')
+    if save_add_button:
+        # handling of time exceptions
+        try:
+            mysum = str(calculate_time(start_time1, end_time1))
+        except:
+            mysum = '00:00:00'
+        try:
+            mysum2 = str(calculate_time(start_time_2, end_time_2))
+        except:
+            mysum2 = '00:00:00'
+        try:
+            mysum3 = str(calculate_time(start_time_3, end_time_3))
+        except:
+            mysum3 = '00:00:00'
+        # calling insertion function
+        insert_client(mysum, client_name_1, loc1, country1, mysum2, client_name_2, loc2, country2, mysum3,
+                      client_name_3, loc3, country3)
+        st.success('response added')
+    save_exit_button = clm5.button('save/exit')
+    if save_exit_button:
+        # handling time exceptions
+        try:
+            mysum = str(calculate_time(start_time1, end_time1))
+        except:
+            mysum = '00:00:00'
+        try:
+            mysum2 = str(calculate_time(start_time_2, end_time_2))
+        except:
+            mysum2 = '00:00:00'
+        try:
+            mysum3 = str(calculate_time(start_time_3, end_time_3))
+        except:
+            mysum3 = '00:00:00'
+        # calling insertion method
+        insert_client(mysum, client_name_1, loc1, country1, mysum2, client_name_2, loc2, country2, mysum3,
+                      client_name_3, loc3, country3)
+        # this will make the form print the saved results and stop the execution
+        finish = True
+
+
+  
     
         
